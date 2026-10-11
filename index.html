@@ -526,6 +526,7 @@ footer { padding: 60px 0 40px; text-align: center; color: var(--faint); font-siz
 .connect-icons .ci svg { width: 28px; height: 28px; }
 .connect-icons .ci:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 12px 28px -12px color-mix(in srgb, var(--accent) 60%, transparent); }
 .connect-icons .ci.copied { background: color-mix(in srgb, var(--ok) 18%, transparent); border-color: var(--ok); color: var(--ok); }
+.visit-count b { color: var(--accent); font-weight: 600; }
 </style>
 </head>
 <body>
@@ -1009,7 +1010,7 @@ footer { padding: 60px 0 40px; text-align: center; color: var(--faint); font-siz
 </section>
 
 <footer>
-  <div class="wrap">© <span id="yr">2026</span> Vikram Sharma · Hand-built with HTML, CSS &amp; vanilla JavaScript · Hosted on GitHub Pages</div>
+  <div class="wrap"><span id="visitCount" class="visit-count" hidden>👀 <b></b> visitors so far · </span>© <span id="yr">2026</span> Vikram Sharma · Hand-built with HTML, CSS &amp; vanilla JavaScript · Hosted on GitHub Pages</div>
 </footer>
 
 <!-- ================= RESUME MODAL ================= -->
@@ -1683,5 +1684,93 @@ ORDER BY sellable_kg DESC;`
   $$('[data-tour]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); startTour(); }));
 })();
 </script>
+
+<!-- ================= ANALYTICS (GoatCounter: free, no cookies) ================= -->
+<script>
+(function () {
+  var GC_CODE = 'vikramdata';               // your GoatCounter code → https://vikramdata.goatcounter.com
+  var GC_URL = 'https://' + GC_CODE + '.goatcounter.com';
+  var queue = [];
+  function track(name, title) {
+    name = String(name).toLowerCase().replace(/[^a-z0-9\-_.]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80);
+    if (!name) return;
+    var ev = { path: name, title: title || name, event: true };
+    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count(ev); else queue.push(ev);
+  }
+  window.vsTrack = track;
+  window.addEventListener('load', function () {
+    var tries = 0;
+    (function flush() {
+      if (window.goatcounter && window.goatcounter.count) { while (queue.length) window.goatcounter.count(queue.shift()); }
+      else if (tries++ < 20) setTimeout(flush, 500);
+    })();
+  });
+
+  /* What visitors do on the page */
+  var RULES = [
+    ['[data-tour]', function () { return ['tour-open', 'Opened recruiter tour']; }],
+    ['#tourPop [data-t="auto"]', function () { return ['tour-start-autoplay', 'Tour started (autoplay)']; }],
+    ['#tourPop [data-t="self"]', function () { return ['tour-start-self-paced', 'Tour started (self-paced)']; }],
+    ['#tourPop [data-t="next"]', function (el) { return /finish/i.test(el.textContent) ? ['tour-finished', 'Finished recruiter tour'] : null; }],
+    ['[data-resume]', function () { return ['resume-open', 'Opened interactive résumé']; }],
+    ['#rmTabs .tab', function (el) { return ['resume-filter-' + el.dataset.f, 'Résumé filter: ' + el.textContent.trim()]; }],
+    ['#rmPrint', function () { return ['resume-print', 'Printed / saved résumé']; }],
+    ['a[href$=".pdf"]:not([data-resume])', function () { return ['resume-pdf-download', 'Downloaded résumé PDF']; }],
+    ['#chatFab, [data-open-chat]', function () { return ['chat-open', 'Opened résumé assistant']; }],
+    ['#chatChips button', function (el) { return ['chat-topic-' + el.textContent.replace(/[^a-z]/gi, ''), 'Chat topic: ' + el.textContent.trim()]; }],
+    ['.lab-tab', function (el) { return ['lab-tab-' + el.dataset.panel, 'Pipeline Lab tab: ' + el.textContent.trim()]; }],
+    ['#dqRun', function () { return ['lab-dq-run', 'Ran data quality pipeline']; }],
+    ['#dqFix', function () { return ['lab-dq-fix', 'Applied RCA fix']; }],
+    ['#dqRerun', function () { return ['lab-dq-rerun', 'Reran pipeline (idempotency)']; }],
+    ['#invSale', function () { return ['lab-invoice-sale', 'Simulated invoice alert']; }],
+    ['#invDup', function () { return ['lab-invoice-duplicate', 'Sent duplicate webhook']; }],
+    ['#sqlPresets .tab', function (el) { return ['lab-sql-preset-' + el.dataset.q, 'SQL preset: ' + el.textContent.trim()]; }],
+    ['#sqlRun', function () { return ['lab-sql-run', 'Ran SQL query']; }],
+    ['#abRun', function () { return ['lab-ab-run', 'Ran A/B experiment']; }],
+    ['[data-copy]', function (el) { return ['copy-' + (el.dataset.label || 'link'), 'Copied ' + (el.dataset.label || 'link')]; }],
+    ['#copyEmail', function () { return ['copy-email-button', 'Copied email (button)']; }],
+    ['.proj-media[data-zoom]', function () { return ['project-zoom-dashboard', 'Zoomed a project dashboard']; }],
+    ['#themeBtn', function () { return ['theme-toggle', 'Toggled light/dark']; }],
+    ['a[href^="mailto:"]', function () { return ['email-click', 'Clicked email link']; }],
+    ['a[href^="http"]', function (el) {
+      try { var u = new URL(el.href); if (u.host === location.host) return null;
+        var label = u.host.replace(/^www\./, '') + u.pathname.replace(/\/$/, '');
+        return ['out-' + label, 'Outbound: ' + label]; } catch (e) { return null; }
+    }]
+  ];
+  document.addEventListener('click', function (e) {
+    if (!e.isTrusted) return;            // ignore clicks made by the tour itself
+    for (var i = 0; i < RULES.length; i++) {
+      var el = e.target.closest(RULES[i][0]);
+      if (el) { var r = RULES[i][1](el); if (r) track(r[0], r[1]); }
+    }
+  }, true);
+  document.addEventListener('submit', function (e) {
+    if (e.target.id === 'contactForm') track('contact-form-send', 'Sent contact form');
+    if (e.target.id === 'chatForm') track('chat-custom-question', 'Asked the assistant a typed question');
+  }, true);
+  var sqlInput = document.getElementById('sqlInput');
+  if (sqlInput) sqlInput.addEventListener('keydown', function (e) { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') track('lab-sql-run', 'Ran SQL query'); });
+
+  /* How far people scroll (once per section, per visit) */
+  var seen = {};
+  if ('IntersectionObserver' in window) {
+    var so = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting && !seen[en.target.id]) { seen[en.target.id] = 1; track('view-' + en.target.id, 'Viewed section: ' + en.target.id); so.unobserve(en.target); } });
+    }, { threshold: 0.35 });
+    ['experience', 'projects', 'lab', 'skills', 'contact'].forEach(function (id) { var el = document.getElementById(id); if (el) so.observe(el); });
+  }
+
+  /* Public visitor count in the footer (hidden if unavailable) */
+  fetch(GC_URL + '/counter/TOTAL.json').then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (d) {
+    if (!d || !d.count) return;
+    var n = parseInt(String(d.count).replace(/[^0-9]/g, ''), 10);
+    if (!n || n < 25) return;               // stay hidden until the number looks respectable
+    var el = document.getElementById('visitCount');
+    el.querySelector('b').textContent = d.count; el.hidden = false;
+  }).catch(function () {});
+})();
+</script>
+<script data-goatcounter="https://vikramdata.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
