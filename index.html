@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vikram Sharma | Data Engineer</title>
-<meta name="description" content="Vikram Sharma, Data Engineer in Toronto, open to roles across the GTA and Ontario. Data pipelines on AWS, data quality, pricing analytics and Power BI. AWS Certified Data Engineer – Associate.">
+<meta name="description" content="Vikram Sharma, Data Engineer based in Ontario, Canada. Data pipelines on AWS, data quality, pricing analytics and Power BI. AWS Certified Data Engineer – Associate.">
 <meta property="og:title" content="Vikram Sharma | Data Engineer">
-<meta property="og:description" content="Data pipelines, AWS, data quality and analytics. 5+ years. Toronto &amp; GTA, Ontario.">
+<meta property="og:description" content="Data pipelines, AWS, data quality and analytics. 5+ years. Based in Ontario, Canada.">
 <meta property="og:url" content="https://vikramdata.github.io">
 <meta name="theme-color" content="#070b14">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230f172a'/><text x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='700' font-size='28' fill='%232dd4bf'>VS</text></svg>">
@@ -133,7 +133,7 @@ nav.top .wrap { display: flex; align-items: center; justify-content: space-betwe
 .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-mono); font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
 .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 0 rgba(52,211,153,.6); animation: pulse 2s infinite; }
 @keyframes pulse { 70% { box-shadow: 0 0 0 10px rgba(52,211,153,0); } 100% { box-shadow: 0 0 0 0 rgba(52,211,153,0); } }
-.hero h1 { font-family: var(--f-head); font-size: clamp(38px, 5.6vw, 64px); line-height: 1.04; letter-spacing: -0.03em; margin: 18px 0 18px; font-weight: 700; }
+.hero h1 { text-wrap: balance; font-family: var(--f-head); font-size: clamp(38px, 5.6vw, 64px); line-height: 1.04; letter-spacing: -0.03em; margin: 18px 0 18px; font-weight: 700; }
 .typed { font-family: var(--f-mono); font-size: 17px; color: var(--muted); min-height: 28px; margin-bottom: 18px; }
 .typed .cursor { display: inline-block; width: 9px; height: 18px; background: var(--accent); vertical-align: -3px; margin-left: 2px; animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
@@ -345,6 +345,187 @@ footer { padding: 60px 0 40px; text-align: center; color: var(--faint); font-siz
   section.block { padding-top: 70px; }
   .console { font-size: 11.5px; padding: 12px 14px; }
 }
+
+/* ---------- SQL playground ---------- */
+.sql-presets { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.sql-editor { width: 100%; min-height: 170px; resize: vertical; background: var(--console); color: #e2e8f0; border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 14px 16px; font-family: var(--f-mono); font-size: 13px; line-height: 1.6; outline: none; tab-size: 2; }
+.sql-editor:focus { border-color: var(--accent); }
+.sql-schema { font-family: var(--f-mono); font-size: 12px; color: var(--muted); background: var(--glass-strong); border: 1px solid var(--border); border-radius: 12px; padding: 10px 14px; margin-bottom: 12px; line-height: 1.7; }
+.sql-schema b { color: var(--accent); font-weight: 600; }
+.sql-result { margin-top: 14px; overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; background: var(--glass-strong); }
+.sql-result:empty { display: none; }
+.sql-result table { width: 100%; border-collapse: collapse; font-family: var(--f-mono); font-size: 12.5px; }
+.sql-result th { text-align: left; padding: 10px 12px; color: var(--accent); font-weight: 600; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.sql-result td { padding: 8px 12px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.sql-result tr:last-child td { border-bottom: none; }
+.sql-result td.fail { color: var(--bad); font-weight: 600; }
+.sql-result td.pass { color: var(--ok); font-weight: 600; }
+.sql-status { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); margin-left: 4px; }
+.sql-status.err { color: var(--bad); }
+
+/* ---------- A/B simulator ---------- */
+.ab-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 16px; }
+.ab-ctrl { padding: 14px 16px; border-radius: 14px; background: var(--glass-strong); border: 1px solid var(--border); }
+.ab-ctrl label { display: flex; justify-content: space-between; font-size: 13.5px; color: var(--muted); margin-bottom: 8px; }
+.ab-ctrl label b { font-family: var(--f-mono); color: var(--ink); }
+.ab-ctrl input[type=range] { width: 100%; accent-color: var(--accent); }
+.ab-out { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 16px; }
+.ab-arm { padding: 16px 18px; border-radius: 14px; background: var(--glass-strong); border: 1px solid var(--border); }
+.ab-arm .k { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.ab-arm .v { font-family: var(--f-head); font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
+.ab-arm .sub { font-size: 13px; color: var(--muted); }
+.ab-bar { height: 6px; border-radius: 99px; background: var(--border); margin-top: 10px; overflow: hidden; }
+.ab-bar span { display: block; height: 100%; width: 0; background: var(--grad); transition: width .6s ease; }
+.ab-stats { margin-top: 14px; padding: 16px 18px; border-radius: 14px; background: var(--glass-strong); border: 1px solid var(--border); display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; align-items: center; }
+.ab-stats .k { font-size: 12px; color: var(--muted); }
+.ab-stats .v { font-family: var(--f-mono); font-weight: 600; font-size: 16px; }
+.verdict { display: inline-block; padding: 6px 10px; border-radius: 9px; font-family: var(--f-mono); font-size: 12px; font-weight: 600; }
+.verdict.yes { color: var(--ok); background: color-mix(in srgb, var(--ok) 14%, transparent); }
+.verdict.no { color: var(--warn); background: color-mix(in srgb, var(--warn) 14%, transparent); }
+
+/* ---------- Contact form ---------- */
+.contact-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 22px; }
+.connect { padding: 36px; position: relative; overflow: hidden; }
+.connect::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 60%); pointer-events: none; }
+.connect h2 { font-family: var(--f-head); font-size: clamp(30px, 4vw, 44px); letter-spacing: -0.03em; line-height: 1.1; margin: 12px 0; position: relative; }
+.connect > p { color: var(--muted); font-size: 16.5px; position: relative; max-width: 480px; }
+.connect-list { list-style: none; display: grid; gap: 10px; margin: 26px 0; position: relative; }
+.connect-list a, .connect-list span.row { display: flex; align-items: center; gap: 14px; color: var(--ink); font-size: 15px; }
+.connect-list .ci { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: var(--glass-strong); border: 1px solid var(--border); color: var(--accent); flex-shrink: 0; }
+.connect-list .ci svg { width: 18px; height: 18px; }
+.connect-list a:hover .ci { border-color: var(--accent); }
+.connect .cta-row { margin-top: 0; position: relative; }
+.cform { padding: 36px; display: grid; gap: 14px; align-content: start; }
+.cform h3 { font-family: var(--f-head); font-size: 28px; letter-spacing: -0.02em; }
+.cform input, .cform textarea { width: 100%; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border); background: var(--glass-strong); color: var(--ink); font-family: var(--f-body); font-size: 15px; outline: none; transition: border-color .2s; }
+.cform input:focus, .cform textarea:focus { border-color: var(--accent); }
+.cform textarea { min-height: 130px; resize: vertical; }
+.cform .btn { justify-content: center; }
+.cform .hint { font-size: 12.5px; color: var(--faint); }
+
+/* ---------- Resume modal ---------- */
+.modal { position: fixed; inset: 0; z-index: 90; background: rgba(3,6,12,.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 24px; }
+.modal.open { display: flex; }
+.modal-card { width: min(940px, 100%); max-height: calc(100vh - 48px); display: flex; flex-direction: column; background: var(--bg-2); border: 1px solid var(--border); border-radius: 22px; box-shadow: 0 40px 100px -20px rgba(0,0,0,.6); overflow: hidden; animation: pop .25s ease; }
+@keyframes pop { from { opacity: 0; transform: translateY(12px) scale(.98); } }
+.modal-head { padding: 22px 26px 16px; border-bottom: 1px solid var(--border); background: var(--glass); }
+.modal-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.modal-top h3 { font-family: var(--f-head); font-size: 22px; letter-spacing: -0.01em; }
+.modal-actions { display: flex; gap: 8px; align-items: center; }
+.modal-head .tabs { margin-bottom: 0; }
+.modal-body { overflow-y: auto; padding: 34px 40px 40px; }
+.resume-doc { font-size: 14.5px; line-height: 1.6; color: var(--ink); max-width: 800px; margin: 0 auto; }
+.resume-doc .r-name { text-align: center; font-family: var(--f-head); font-size: 36px; letter-spacing: -0.02em; font-weight: 700; line-height: 1.1; }
+.resume-doc .r-title { text-align: center; font-family: var(--f-mono); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 8px 0 10px; }
+.resume-doc .r-contact { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px; font-size: 13.5px; color: var(--muted); }
+.resume-doc .r-contact a { color: var(--muted); }
+.resume-doc .r-contact a:hover { color: var(--accent); }
+.resume-doc h4 { font-family: var(--f-head); font-size: 14px; letter-spacing: .12em; text-transform: uppercase; margin: 26px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+.resume-doc .r-job { margin-bottom: 16px; }
+.resume-doc .r-row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.resume-doc .r-row b { font-size: 15.5px; }
+.resume-doc .r-date { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+.resume-doc .r-org { color: var(--accent); font-size: 14px; }
+.resume-doc ul { margin: 6px 0 0 18px; }
+.resume-doc li { margin-bottom: 4px; }
+.resume-doc .r-skill { margin-bottom: 6px; }
+.resume-doc .r-skill b { color: var(--ink); }
+.resume-doc [data-cat].dim { display: none; }
+.resume-doc li.hl { background: color-mix(in srgb, var(--accent) 10%, transparent); border-radius: 6px; }
+
+/* ---------- Chat assistant ---------- */
+.chat-fab { position: fixed; right: 22px; bottom: 22px; z-index: 80; display: inline-flex; align-items: center; gap: 10px; padding: 14px 20px; border-radius: 999px; border: none; background: var(--grad); color: #06121a; font-family: var(--f-body); font-weight: 700; font-size: 14.5px; cursor: pointer; box-shadow: 0 16px 40px -12px rgba(45,212,191,.6); transition: transform .2s; }
+.chat-fab:hover { transform: translateY(-2px); }
+.chat-fab.hidden { display: none; }
+.chat { position: fixed; right: 22px; bottom: 22px; z-index: 85; width: min(400px, calc(100vw - 32px)); height: min(580px, calc(100vh - 110px)); display: none; flex-direction: column; background: var(--bg-2); border: 1px solid var(--border); border-radius: 22px; box-shadow: 0 40px 90px -20px rgba(0,0,0,.6); overflow: hidden; animation: pop .25s ease; }
+.chat.open { display: flex; }
+.chat-head { display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-bottom: 1px solid var(--border); background: var(--glass); }
+.chat-head img, .chat-head .cav { width: 40px; height: 40px; border-radius: 12px; object-fit: cover; object-position: 50% 35%; background: var(--grad); }
+.chat-head b { display: block; font-family: var(--f-head); font-size: 16px; }
+.chat-head small { color: var(--muted); font-size: 12px; display: flex; align-items: center; gap: 6px; }
+.chat-head small::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); }
+.chat-head .icon-btn { margin-left: auto; }
+.chat-msgs { flex: 1; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.msg { max-width: 88%; padding: 11px 14px; border-radius: 16px; font-size: 14.5px; line-height: 1.55; animation: fadein .25s; }
+.msg.bot { background: var(--glass-strong); border: 1px solid var(--border); border-bottom-left-radius: 6px; align-self: flex-start; }
+.msg.me { background: var(--grad); color: #06121a; font-weight: 500; border-bottom-right-radius: 6px; align-self: flex-end; }
+.msg.bot b { color: var(--ink); }
+.msg.bot ul { margin: 6px 0 0 18px; }
+.msg.typing span { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--muted); margin: 0 2px; animation: bounce 1s infinite; }
+.msg.typing span:nth-child(2) { animation-delay: .15s; } .msg.typing span:nth-child(3) { animation-delay: .3s; }
+@keyframes bounce { 50% { transform: translateY(-4px); opacity: .5; } }
+.chat-chips { display: flex; gap: 6px; padding: 10px 14px; overflow-x: auto; border-top: 1px solid var(--border); scrollbar-width: none; }
+.chat-chips button { flex-shrink: 0; font-size: 12.5px; padding: 6px 11px; border-radius: 999px; border: 1px solid var(--border); background: var(--glass); color: var(--muted); cursor: pointer; font-family: var(--f-body); }
+.chat-chips button:hover { color: var(--ink); border-color: var(--accent); }
+.chat-form { display: flex; gap: 8px; padding: 12px 14px 14px; border-top: 1px solid var(--border); }
+.chat-form input { flex: 1; min-width: 0; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--glass-strong); color: var(--ink); font-size: 14.5px; font-family: var(--f-body); outline: none; }
+.chat-form input:focus { border-color: var(--accent); }
+.chat-note { font-size: 11.5px; color: var(--faint); text-align: center; padding: 0 14px 10px; }
+
+/* ---------- Recruiter tour ---------- */
+.tour-pop { position: fixed; left: 24px; bottom: 24px; z-index: 120; width: min(380px, calc(100vw - 32px)); padding: 22px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 20px; box-shadow: 0 30px 80px -20px rgba(0,0,0,.65); display: none; animation: pop .25s ease; }
+.tour-pop.open { display: block; }
+.tour-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.tour-badge { font-family: var(--f-mono); font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 5px 10px; border-radius: 8px; background: var(--grad); color: #06121a; }
+.tour-step { font-size: 12.5px; color: var(--muted); font-family: var(--f-mono); }
+.tour-pop h4 { font-family: var(--f-head); font-size: 20px; letter-spacing: -0.01em; margin-bottom: 6px; }
+.tour-pop p { color: var(--muted); font-size: 14.5px; }
+.tour-progress { height: 3px; border-radius: 99px; background: var(--border); margin: 16px 0; overflow: hidden; }
+.tour-progress span { display: block; height: 100%; background: var(--grad); transition: width .4s; }
+.tour-btns { display: flex; gap: 8px; align-items: center; }
+.tour-btns .spacer { flex: 1; }
+.tour-btns .link { background: none; border: none; color: var(--muted); font-family: var(--f-body); font-weight: 600; font-size: 13.5px; cursor: pointer; padding: 8px; }
+.tour-btns .link:hover { color: var(--ink); }
+.tour-start { display: grid; gap: 10px; margin-top: 16px; }
+.tour-start .btn { justify-content: center; }
+.tour-focus { position: relative; z-index: 70 !important; box-shadow: 0 0 0 3px var(--accent), 0 0 0 100vmax rgba(3,6,12,.6) !important; border-radius: var(--r); transition: box-shadow .3s; }
+
+/* ---------- Responsive additions ---------- */
+@media (max-width: 860px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .ab-grid { grid-template-columns: 1fr; }
+  .ab-stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 680px) {
+  .modal { padding: 0; }
+  .modal-card { max-height: 100vh; height: 100%; border-radius: 0; }
+  .modal-body { padding: 24px 18px 30px; }
+  .modal-head { padding: 16px 18px 12px; }
+  .resume-doc .r-name { font-size: 28px; }
+  .connect, .cform { padding: 24px 20px; }
+  .ab-out { grid-template-columns: 1fr; }
+  .chat-fab { right: 14px; bottom: 14px; padding: 12px 16px; }
+  .chat { right: 8px; bottom: 8px; width: calc(100vw - 16px); height: calc(100vh - 80px); }
+  .tour-pop { left: 12px; right: 12px; bottom: 12px; width: auto; }
+}
+
+/* ---------- Print: resume only ---------- */
+@media print {
+  body.print-resume { --ink: #000; --muted: #333; --accent: #0b5f58; --border: #ccc; background: #fff !important; }
+  body.print-resume::before { display: none; }
+  body.print-resume > *:not(#resumeModal) { display: none !important; }
+  body.print-resume #resumeModal { position: static; display: block !important; background: none; backdrop-filter: none; padding: 0; }
+  body.print-resume .modal-card { max-height: none; overflow: visible; border: 0; box-shadow: none; background: #fff; width: auto; animation: none; }
+  body.print-resume .modal-head { display: none; }
+  body.print-resume .modal-body { overflow: visible; padding: 0; }
+  body.print-resume .resume-doc { font-size: 11pt; max-width: none; }
+  body.print-resume .resume-doc a { color: #000; text-decoration: none; }
+  body.print-resume .resume-doc li.hl { background: none; }
+}
+
+.connect-list li { display: flex; align-items: center; gap: 14px; font-size: 15px; }
+.connect-list li a { color: var(--ink); }
+.connect-list li a:hover { color: var(--accent); }
+.connect-list button.ci { cursor: pointer; font: inherit; padding: 0; position: relative; transition: border-color .2s, transform .2s, background .2s; }
+.connect-list button.ci:hover { border-color: var(--accent); transform: translateY(-2px); }
+.connect-list button.ci.copied { background: color-mix(in srgb, var(--ok) 18%, transparent); border-color: var(--ok); color: var(--ok); }
+.connect > p.copy-hint { font-size: 12.5px; color: var(--faint); margin: -12px 0 22px; position: relative; }
+
+.connect-icons { display: flex; flex-wrap: wrap; gap: 14px; margin: 28px 0 22px; position: relative; }
+.connect-icons .ci { width: 64px; height: 64px; border-radius: 18px; display: grid; place-items: center; background: var(--glass-strong); border: 1px solid var(--border); color: var(--accent); cursor: pointer; padding: 0; transition: border-color .2s, transform .2s, background .2s, box-shadow .2s; }
+.connect-icons .ci svg { width: 28px; height: 28px; }
+.connect-icons .ci:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 12px 28px -12px color-mix(in srgb, var(--accent) 60%, transparent); }
+.connect-icons .ci.copied { background: color-mix(in srgb, var(--ok) 18%, transparent); border-color: var(--ok); color: var(--ok); }
 </style>
 </head>
 <body>
@@ -363,7 +544,8 @@ footer { padding: 60px 0 40px; text-align: center; color: var(--faint); font-siz
       <a href="#contact">Contact</a>
     </div>
     <div class="nav-actions">
-      <a class="btn sm" href="Vikram_Sharma_Resume_2026.pdf" target="_blank" rel="noopener">Resume</a>
+      <button class="btn sm" data-tour>Tour ⚡</button>
+      <a class="btn sm" href="Vikram_Sharma_Resume_2026.pdf" data-resume>Resume</a>
       <button class="icon-btn" id="themeBtn" aria-label="Toggle light and dark mode" title="Toggle theme">☀️</button>
       <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
     </div>
@@ -375,26 +557,27 @@ footer { padding: 60px 0 40px; text-align: center; color: var(--faint); font-siz
   <a href="#lab">Pipeline Lab</a>
   <a href="#skills">Skills</a>
   <a href="#contact">Contact</a>
-  <a href="Vikram_Sharma_Resume_2026.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+  <a href="#" data-tour>Recruiter tour ⚡</a>
+  <a href="Vikram_Sharma_Resume_2026.pdf" data-resume>Resume (PDF)</a>
 </div>
 
 <!-- ================= HERO ================= -->
 <header class="hero" id="top">
   <div class="wrap hero-grid">
     <div class="reveal">
-      <div class="eyebrow"><span class="pulse"></span>Open to work · Toronto &amp; GTA · Ontario</div>
-      <h1>I build data pipelines teams <span class="grad-text">trust with real money.</span></h1>
+      <div class="eyebrow"><span class="pulse"></span>Open to work · Based in Ontario, Canada</div>
+      <h1>Data pipelines teams trust <span class="grad-text">when money’s on the line.</span></h1>
       <div class="typed"><span id="typed"></span><span class="cursor"></span></div>
       <p class="lead">Data engineer with <b>5+ years</b> across AWS, Azure and Power BI. Most recently I owned the data platform at a <b>$50M+</b> ticket brokerage, from marketplace API ingestion to the pricing analytics behind <b>$30M+</b> of inventory.</p>
       <div class="cta-row">
         <a class="btn primary" href="#projects">Explore projects
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn" href="#lab">Try the pipeline lab ⚡</a>
-        <a class="btn" href="Vikram_Sharma_Resume_2026.pdf" target="_blank" rel="noopener">View resume</a>
+        <button class="btn" data-tour>Recruiter tour ⚡</button>
+        <a class="btn" href="Vikram_Sharma_Resume_2026.pdf" data-resume>View resume</a>
       </div>
       <div class="socials">
         <a href="https://github.com/vikramdata" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a>
-        <a href="https://www.linkedin.com/in/vikramsh27" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a>
+        <a href="https://www.linkedin.com/in/vikramdata" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a>
         <a href="mailto:sharmavik279@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
       </div>
     </div>
@@ -405,18 +588,17 @@ footer { padding: 60px 0 40px; text-align: center; color: var(--faint); font-siz
         <div>
           <h3>Vikram Sharma</h3>
           <div class="sub">Data Engineer · Analytics &amp; BI</div>
-          <div class="sub">📍 Toronto, ON</div>
+          <div class="sub">📍 Based in Ontario, Canada</div>
         </div>
       </div>
       <div class="badges">
         <span class="badge ok">● Available now</span>
-        <span class="badge">Open to Toronto, GTA &amp; Ontario</span>
         <span class="badge aws">AWS Certified Data Engineer</span>
-        <span class="badge">M.App.Comp · UWindsor</span>
+        <span class="badge">Master (Applied Computing) · UWindsor</span>
       </div>
       <div class="stats">
         <div class="stat"><div class="label">Years in data</div><div class="val"><span class="count" data-to="5">0</span>+</div></div>
-        <div class="stat"><div class="label">Inventory priced / yr</div><div class="val">$<span class="count" data-to="30">0</span>M+</div></div>
+        <div class="stat"><div class="label">Inventory managed</div><div class="val">$<span class="count" data-to="30">0</span>M+</div></div>
         <div class="stat"><div class="label">Real-time alert latency</div><div class="val">&lt;1s</div></div>
         <div class="stat"><div class="label">Events migrated to AWS</div><div class="val"><span class="count" data-to="1">0</span>M+</div></div>
       </div>
@@ -595,7 +777,7 @@ footer { padding: 60px 0 40px; text-align: center; color: var(--faint); font-siz
           <h3>Ticket Pricing &amp; Sales Analytics Platform</h3>
           <p class="desc">The company had no single view of sales or demand. I built its first analytics platform to guide buying and pricing.</p>
           <div class="kpis">
-            <div class="kpi"><div class="k">Inventory priced / yr</div><div class="v">$30M+</div></div>
+            <div class="kpi"><div class="k">Inventory managed / yr</div><div class="v">$30M+</div></div>
             <div class="kpi"><div class="k">Margins held</div><div class="v">18–23%</div></div>
             <div class="kpi"><div class="k">Revenue growth</div><div class="v">2×+</div></div>
           </div>
@@ -632,13 +814,15 @@ footer { padding: 60px 0 40px; text-align: center; color: var(--faint); font-siz
     <div class="sec-head reveal">
       <div class="eyebrow">Interactive</div>
       <h2>Pipeline Lab</h2>
-      <p>Step through two of my pipelines and watch how they handle bad data and duplicate events.</p>
+      <p>Run my pipelines, query real data with SQL, and test a pricing experiment, all in your browser.</p>
     </div>
 
     <div class="glass lab reveal">
       <div class="lab-tabs">
-        <button class="lab-tab active" data-panel="dq">🌱 Data quality pipeline</button>
-        <button class="lab-tab" data-panel="invoice">⚡ Real-time invoice alerts</button>
+        <button class="lab-tab active" data-panel="dq">🌱 Data quality</button>
+        <button class="lab-tab" data-panel="invoice">⚡ Real-time alerts</button>
+        <button class="lab-tab" data-panel="sql">🧮 SQL playground</button>
+        <button class="lab-tab" data-panel="ab">📊 A/B pricing test</button>
       </div>
 
       <!-- DQ panel -->
@@ -680,6 +864,51 @@ footer { padding: 60px 0 40px; text-align: center; color: var(--faint); font-siz
         </div>
         <div class="console" id="invConsole"><div class="ln dim">// waiting for marketplace events…</div></div>
         <p class="lab-note">Simulation of the production architecture. Marketplace names and timings are illustrative; the real service delivered alerts in under one second.</p>
+      </div>
+
+      <!-- SQL panel -->
+      <div class="lab-panel" id="panel-sql">
+        <p class="lab-intro">A real SQLite database running in your browser, loaded with a small synthetic slice of the Greenhouse data. Pick a query or write your own. It shows how I found the Bell Pepper reconciliation bug with plain SQL.</p>
+        <div class="sql-presets" id="sqlPresets">
+          <button class="tab active" data-q="0">REC-001 reconciliation</button>
+          <button class="tab" data-q="1">Find bad crop names</button>
+          <button class="tab" data-q="2">Reconciliation after fix</button>
+          <button class="tab" data-q="3">Yield by zone</button>
+        </div>
+        <div class="sql-schema">
+          <b>harvest</b>(harvest_id, harvest_date, zone, crop, grade, kg) ·
+          <b>shipments</b>(line_id, ship_date, customer, crop, cases, kg) ·
+          <b>crop_master</b>(crop) · <b>crop_alias</b>(raw_name, crop)
+        </div>
+        <textarea class="sql-editor" id="sqlInput" spellcheck="false" aria-label="SQL query"></textarea>
+        <div class="lab-controls" style="margin-top:12px;">
+          <button class="btn primary sm" id="sqlRun">▶ Run query</button>
+          <span class="sql-status" id="sqlStatus">Ctrl + Enter to run</span>
+        </div>
+        <div class="sql-result" id="sqlResult"></div>
+        <p class="lab-note">Synthetic sample data for demonstration. Powered by sql.js (SQLite compiled to WebAssembly); nothing leaves your browser.</p>
+      </div>
+
+      <!-- A/B panel -->
+      <div class="lab-panel" id="panel-ab">
+        <p class="lab-intro">Pricing analytics in practice: would showing all-in ticket prices lift checkout conversion? Set the true conversion rates and traffic, run the experiment, and see whether a two-proportion z-test can tell the difference.</p>
+        <div class="ab-grid">
+          <div class="ab-ctrl"><label>Control (A) true rate <b id="abAv">8.0%</b></label><input type="range" id="abA" min="1" max="20" step="0.5" value="8"></div>
+          <div class="ab-ctrl"><label>All-in pricing (B) true rate <b id="abBv">9.0%</b></label><input type="range" id="abB" min="1" max="20" step="0.5" value="9"></div>
+          <div class="ab-ctrl"><label>Visitors per group <b id="abNv">3,000</b></label><input type="range" id="abN" min="500" max="20000" step="500" value="3000"></div>
+        </div>
+        <button class="btn primary sm" id="abRun">🔄 Run experiment</button>
+        <div class="ab-out">
+          <div class="ab-arm"><div class="k">Control (A)</div><div class="v" id="abAr">–</div><div class="sub" id="abAc">conversions –</div><div class="ab-bar"><span id="abAbar"></span></div></div>
+          <div class="ab-arm"><div class="k">All-in pricing (B)</div><div class="v" id="abBr">–</div><div class="sub" id="abBc">conversions –</div><div class="ab-bar"><span id="abBbar"></span></div></div>
+        </div>
+        <div class="ab-stats">
+          <div><div class="k">Relative uplift</div><div class="v" id="abUp">–</div></div>
+          <div><div class="k">Z-score</div><div class="v" id="abZ">–</div></div>
+          <div><div class="k">Two-tailed p-value</div><div class="v" id="abP">–</div></div>
+          <div><div class="k">Verdict (α = 0.05)</div><div id="abVerdict" class="v">–</div></div>
+        </div>
+        <p class="lab-note">Each run draws random visitors, so results vary. Try a small lift with low traffic: real effects often fail to reach significance without enough sample size.</p>
       </div>
     </div>
   </div>
@@ -748,16 +977,33 @@ footer { padding: 60px 0 40px; text-align: center; color: var(--faint); font-siz
 <!-- ================= CONTACT ================= -->
 <section class="block" id="contact">
   <div class="wrap">
-    <div class="glass contact-card reveal">
-      <div class="eyebrow" style="justify-content:center;margin-bottom:14px;"><span class="pulse"></span>Open to opportunities</div>
-      <h2>Let's build something <span class="grad-text">reliable.</span></h2>
-      <p>I'm looking for Data Engineering and Analytics Engineering roles in Toronto and the GTA, or elsewhere in Ontario. Email is the fastest way to reach me.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="mailto:sharmavik279@gmail.com">✉️ Email me</a>
-        <button class="btn" id="copyEmail">📋 Copy email</button>
-        <a class="btn" href="https://www.linkedin.com/in/vikramsh27" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="Vikram_Sharma_Resume_2026.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+    <div class="contact-grid">
+      <div class="glass connect reveal">
+        <div class="eyebrow"><span class="pulse"></span>Open to opportunities</div>
+        <h2>Let's build something <span class="grad-text">reliable.</span></h2>
+        <p>I'm looking for Data Engineering and Analytics Engineering roles. I'm based in Ontario, Canada. Email is the fastest way to reach me.</p>
+        <div class="connect-icons">
+          <button type="button" class="ci" data-copy="sharmavik279@gmail.com" data-label="Email" title="Click to copy email" aria-label="Copy email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></button>
+          <button type="button" class="ci" data-copy="https://www.linkedin.com/in/vikramdata" data-label="LinkedIn link" title="Click to copy LinkedIn link" aria-label="Copy LinkedIn link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg></button>
+          <button type="button" class="ci" data-copy="https://github.com/vikramdata" data-label="GitHub link" title="Click to copy GitHub link" aria-label="Copy GitHub link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></button>
+          <button type="button" class="ci" data-copy="https://vikramdata.github.io" data-label="Portfolio link" title="Click to copy portfolio link" aria-label="Copy portfolio link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></button>
+        </div>
+        <p class="copy-hint">Click an icon to copy the email or link.</p>
+        <div class="cta-row">
+          <button class="btn" id="copyEmail">📋 Copy email</button>
+          <a class="btn" href="Vikram_Sharma_Resume_2026.pdf" data-resume>📄 View resume</a>
+        </div>
       </div>
+
+      <form class="glass cform reveal" id="contactForm">
+        <h3>Send a message</h3>
+        <input type="text" id="cfName" placeholder="Your name" required autocomplete="name">
+        <input type="email" id="cfEmail" placeholder="Your email" required autocomplete="email">
+        <input type="text" id="cfCompany" placeholder="Company / role (optional)" autocomplete="organization">
+        <textarea id="cfMsg" placeholder="Your message…" required></textarea>
+        <button class="btn primary" type="submit">Send message 🚀</button>
+        <div class="hint">Opens your email app with the message ready to send.</div>
+      </form>
     </div>
   </div>
 </section>
@@ -765,6 +1011,130 @@ footer { padding: 60px 0 40px; text-align: center; color: var(--faint); font-siz
 <footer>
   <div class="wrap">© <span id="yr">2026</span> Vikram Sharma · Hand-built with HTML, CSS &amp; vanilla JavaScript · Hosted on GitHub Pages</div>
 </footer>
+
+<!-- ================= RESUME MODAL ================= -->
+<div class="modal" id="resumeModal" role="dialog" aria-modal="true" aria-labelledby="rmTitle">
+  <div class="modal-card">
+    <div class="modal-head">
+      <div class="modal-top">
+        <h3 id="rmTitle">Vikram Sharma · Résumé</h3>
+        <div class="modal-actions">
+          <a class="btn sm" href="Vikram_Sharma_Resume_2026.pdf" target="_blank" rel="noopener">⬇ PDF</a>
+          <button class="btn sm" id="rmPrint">🖨 Print / Save PDF</button>
+          <button class="icon-btn" data-close-modal aria-label="Close résumé">✕</button>
+        </div>
+      </div>
+      <div class="tabs" id="rmTabs">
+        <button class="tab active" data-f="all">Show all</button>
+        <button class="tab" data-f="de">Data engineering 🛠</button>
+        <button class="tab" data-f="bi">Analytics &amp; BI 📊</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <article class="resume-doc">
+        <div class="r-name">Vikram Sharma</div>
+        <div class="r-title">Data Engineer · Analytics &amp; Business Intelligence</div>
+        <div class="r-contact">
+          <span>📍 Based in Ontario, Canada</span>
+          <a href="mailto:sharmavik279@gmail.com">✉ sharmavik279@gmail.com</a>
+          <a href="https://www.linkedin.com/in/vikramdata" target="_blank" rel="noopener">in linkedin.com/in/vikramdata</a>
+          <a href="https://vikramdata.github.io">🌐 vikramdata.github.io</a>
+        </div>
+
+        <h4>Summary</h4>
+        <p>Data and analytics professional with 5+ years of experience building data pipelines, business intelligence solutions, automation, and decision support tools across cloud and relational database environments. Delivered a real-time AWS alerting service with sub-second latency and pricing analytics that supported ~$25M in FIFA World Cup revenue. AWS Certified Data Engineer – Associate.</p>
+
+        <h4>Technical skills</h4>
+        <div class="r-skill" data-cat="de"><b>Data Engineering:</b> SQL, T-SQL, Python, Spark, ETL/ELT, data pipelines, data modeling (star schema), data warehousing, data validation &amp; profiling</div>
+        <div class="r-skill" data-cat="de"><b>Cloud &amp; Integration:</b> AWS S3, Lambda, DynamoDB, Redshift, CloudWatch, Azure Data Factory, Azure Databricks, Azure SQL Database, Blob Storage, REST APIs, webhooks, Git</div>
+        <div class="r-skill" data-cat="bi"><b>Analytics &amp; BI:</b> Power BI (DAX, Power Query), Excel, KPI reporting, dashboard development, data visualization, ad hoc, market &amp; pricing analytics</div>
+        <div class="r-skill" data-cat="de bi"><b>Data Operations:</b> pipeline monitoring, production support, root-cause analysis, data quality, workflow automation (Selenium), requirements gathering, stakeholder management</div>
+
+        <h4>Experience</h4>
+        <div class="r-job">
+          <div class="r-row"><b>Data Engineer, Pricing &amp; Market Analytics</b><span class="r-date">Mar 2022 – Sep 2026</span></div>
+          <div class="r-org">Big Time Tickets Inc. · Windsor, ON · $50M+ live-event ticket brokerage, 7–8 person team</div>
+          <ul>
+            <li data-cat="bi">Built the company's first end-to-end sales analytics platform, using Selenium to automate CSV extraction and Power BI models covering sales velocity, ATPs, views, clicks, venue performance and section-level demand.</li>
+            <li data-cat="bi">Drove pricing decisions for $30M+ in annual inventory using marketplace APIs and real-time demand signals, sustaining 18–23% margins while revenue grew from $20–25M (2022) to $50M+ (2026).</li>
+            <li data-cat="de">Integrated marketplace sales and listings APIs and, as data scaled to 200K+ active and 1M+ historical events, migrated storage and processing from a remote server to AWS.</li>
+            <li data-cat="de">Built a real-time invoice notification service using webhooks, AWS Lambda, DynamoDB and CloudWatch, delivering Slack and Discord alerts in under 1 second while handling duplicate events and marketplace-specific formats.</li>
+            <li data-cat="bi">Supported FIFA World Cup pricing, purchasing and ad-hoc analytics during a period that generated approximately $25M in FIFA-related revenue.</li>
+            <li data-cat="de">Led data and integration changes during a POS migration, updating invoice workflows and sales/listing pipelines with less than one month of disruption.</li>
+          </ul>
+        </div>
+        <div class="r-job">
+          <div class="r-row"><b>Software Engineer I</b><span class="r-date">Dec 2020 – Sep 2021</span></div>
+          <div class="r-org">MAQ Software · Hyderabad, India</div>
+          <ul>
+            <li data-cat="de">Extended Spark-based ETL pipelines in SQL and Python to onboard new source tables for financial planning and analytics applications, cutting processing time by ~20%.</li>
+            <li data-cat="de">Automated data ingestion, transformation and processing with Azure Data Factory, Azure SQL Database and Blob Storage.</li>
+            <li data-cat="bi">Developed Power BI reports and dashboards for Microsoft product teams tracking revenue, usage and product KPIs.</li>
+            <li data-cat="de bi">Built monitoring dashboards and Spark-based data validation, improving visibility into processing performance and data quality.</li>
+            <li data-cat="de">Worked with engineering and business stakeholders to troubleshoot pipeline issues and strengthen reliability of recurring reporting workflows.</li>
+          </ul>
+        </div>
+        <div class="r-job" data-cat="bi">
+          <div class="r-row"><b>Software Engineer Intern</b><span class="r-date">Jul 2020 – Aug 2020</span></div>
+          <div class="r-org">Reliance Industries Limited · Navi Mumbai, India</div>
+          <ul><li>Built data visualizations and dashboards in Apache Superset and prepared technical documentation.</li></ul>
+        </div>
+
+        <h4>Projects</h4>
+        <div class="r-job" data-cat="de">
+          <div class="r-row"><b>Greenhouse Data Quality &amp; Pipeline Health Monitor</b><span class="r-date">github.com/vikramdata</span></div>
+          <div class="r-org">SQL Server · T-SQL · Python · Docker · Streamlit</div>
+          <ul>
+            <li>Built a three-source pipeline with SHA-256 idempotent loads and 27 data-driven DQ rules; caught all 19 planted data issues, verified against an answer key.</li>
+            <li>Traced a failed reconciliation to non-standard crop spellings, recovering 33,469 kg of quarantined harvest through a master-data fix (RCA-001).</li>
+          </ul>
+        </div>
+        <div class="r-job" data-cat="de">
+          <div class="r-row"><b>AWS Real-Time Data Pipeline</b><span class="r-date">github.com/vikramdata</span></div>
+          <div class="r-org">Kinesis · Lambda · S3 · Glue · Athena · QuickSight</div>
+          <ul><li>Serverless streaming pipeline from Kinesis ingestion through Lambda transforms to S3, cataloged in Glue and queried with Athena for QuickSight dashboards.</li></ul>
+        </div>
+
+        <h4>Education &amp; certification</h4>
+        <div class="r-row"><span><b>AWS Certified Data Engineer – Associate</b> · Amazon Web Services</span><span class="r-date">Oct 2024</span></div>
+        <div class="r-row"><span><b>Master of Applied Computing</b> · University of Windsor · GPA 84.3%</span><span class="r-date">2021 – 2022</span></div>
+        <div class="r-row"><span><b>B.E. Computer Engineering</b> · Thapar Institute of Engineering &amp; Technology · GPA 8.96/10</span><span class="r-date">2017 – 2021</span></div>
+      </article>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CHAT ASSISTANT ================= -->
+<button class="chat-fab" id="chatFab" aria-label="Open résumé assistant">💬 Ask about Vikram</button>
+<div class="chat" id="chat" role="dialog" aria-label="Résumé assistant">
+  <div class="chat-head">
+    <img src="photo.jpg.JPG" alt="" onerror="this.outerHTML='<span class=cav></span>'">
+    <div><b>Résumé Assistant</b><small>Answers from Vikram's résumé</small></div>
+    <button class="icon-btn" id="chatClose" aria-label="Close assistant">✕</button>
+  </div>
+  <div class="chat-msgs" id="chatMsgs"></div>
+  <div class="chat-chips" id="chatChips">
+    <button data-ask="Summarize his experience">💼 Experience</button>
+    <button data-ask="What are his technical skills?">🛠 Skills</button>
+    <button data-ask="Tell me about his projects">🚀 Projects</button>
+    <button data-ask="Is he AWS certified?">☁️ AWS</button>
+    <button data-ask="Where is he open to work?">📍 Location</button>
+    <button data-ask="How do I contact him?">✉️ Contact</button>
+  </div>
+  <form class="chat-form" id="chatForm">
+    <input id="chatInput" placeholder="Ask a question…" autocomplete="off" aria-label="Your question">
+    <button class="btn primary sm" type="submit">Send</button>
+  </form>
+  <div class="chat-note">Keyword-matched answers written from the résumé. No AI model, no data stored.</div>
+</div>
+
+<!-- ================= TOUR ================= -->
+<div class="tour-pop" id="tourPop" role="dialog" aria-live="polite">
+  <div class="tour-top"><span class="tour-badge">Recruiter tour ⚡</span><span class="tour-step" id="tourStep"></span></div>
+  <h4 id="tourTitle"></h4>
+  <p id="tourText"></p>
+  <div id="tourBody"></div>
+</div>
 
 <div class="lightbox" id="lightbox"><img alt="Enlarged dashboard"></div>
 <div class="toast" id="toast"></div>
@@ -992,6 +1362,325 @@ footer { padding: 60px 0 40px; text-align: center; color: var(--faint); font-siz
     invLog('<span class="ok">         ✓ duplicate dropped, no second alert</span>');
     saleBtn.disabled = false; dupBtn.disabled = false; ibusy = false;
   });
+})();
+</script>
+
+<script>
+(function () {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const toast = msg => { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2000); };
+
+  /* ================= Résumé modal ================= */
+  const modal = $('#resumeModal');
+  function openResume() { closeChat(); modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeResume() { modal.classList.remove('open'); document.body.style.overflow = ''; }
+  $$('[data-resume]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); $('#mobileMenu').classList.remove('open'); openResume(); }));
+  $('[data-close-modal]').addEventListener('click', closeResume);
+  modal.addEventListener('click', e => { if (e.target === modal) closeResume(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeResume(); closeChat(); } });
+  function filterResume(f) {
+    $$('#rmTabs .tab').forEach(b => b.classList.toggle('active', b.dataset.f === f));
+    $$('.resume-doc [data-cat]').forEach(el => {
+      const match = f === 'all' || el.dataset.cat.split(' ').includes(f);
+      el.classList.toggle('dim', !match);
+      el.classList.toggle('hl', f !== 'all' && match && el.tagName === 'LI');
+    });
+  }
+  $$('#rmTabs .tab').forEach(b => b.addEventListener('click', () => filterResume(b.dataset.f)));
+  $('#rmPrint').addEventListener('click', () => { filterResume('all'); window.print(); });
+  window.addEventListener('beforeprint', () => { if (modal.classList.contains('open')) document.body.classList.add('print-resume'); });
+  window.addEventListener('afterprint', () => document.body.classList.remove('print-resume'));
+
+
+  /* Click icon to copy */
+  const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg>';
+  function copyText(t) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t);
+    return new Promise((res, rej) => { const ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy') ? res() : rej(); } catch (e) { rej(e); } ta.remove(); });
+  }
+  $$('[data-copy]').forEach(btn => btn.addEventListener('click', () => {
+    const orig = btn.innerHTML;
+    copyText(btn.dataset.copy).then(() => {
+      toast((btn.dataset.label || 'Link') + ' copied ✓');
+      btn.classList.add('copied'); btn.innerHTML = CHECK;
+      setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = orig; }, 1500);
+    }, () => toast(btn.dataset.copy));
+  }));
+  /* ================= Contact form (mailto) ================= */
+  $('#contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const name = $('#cfName').value.trim(), email = $('#cfEmail').value.trim(), co = $('#cfCompany').value.trim(), msg = $('#cfMsg').value.trim();
+    const subject = 'Portfolio inquiry from ' + name + (co ? ' (' + co + ')' : '');
+    const body = msg + '\n\n— ' + name + '\n' + email + (co ? '\n' + co : '');
+    window.location.href = 'mailto:sharmavik279@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    toast('Opening your email app ✉️');
+  });
+
+  /* ================= Chat assistant ================= */
+  const chat = $('#chat'), fab = $('#chatFab'), msgs = $('#chatMsgs');
+  let greeted = false;
+  function openChat() { chat.classList.add('open'); fab.classList.add('hidden'); if (!greeted) { greeted = true; bot("Hi! I'm a résumé assistant for <b>Vikram Sharma</b>. Ask about his experience, skills, projects or availability, or tap a suggestion below."); } setTimeout(() => $('#chatInput').focus({ preventScroll: true }), 50); }
+  function closeChat() { chat.classList.remove('open'); fab.classList.remove('hidden'); }
+  fab.addEventListener('click', openChat);
+  $('#chatClose').addEventListener('click', closeChat);
+  $$('[data-open-chat]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); openChat(); }));
+  function add(cls, html) { const d = document.createElement('div'); d.className = 'msg ' + cls; d.innerHTML = html; msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight; return d; }
+  function bot(html) { add('bot', html); }
+
+  const KB = [
+    { k: ['experience', 'years', 'background', 'career', 'summar', 'work history', 'about him', 'who is'], a: "Vikram has <b>5+ years</b> in data engineering, BI and analytics:<ul><li><b>Data Engineer, Pricing &amp; Market Analytics</b> at Big Time Tickets (2022–2026), owning the data stack at a $50M+ ticket brokerage</li><li><b>Software Engineer I</b> at MAQ Software (2020–2021), building Spark/Azure ETL and Power BI for Microsoft teams</li><li><b>Intern</b> at Reliance Industries (2020), dashboards in Apache Superset</li></ul>" },
+    { k: ['big time', 'ticket', 'current', 'recent', 'last job', 'latest', 'brokerage'], a: "At <b>Big Time Tickets</b> (Mar 2022 – Sep 2026) he built the company's first sales analytics platform, drove pricing for <b>$30M+</b> of annual inventory at 18–23% margins while revenue grew from $20–25M to <b>$50M+</b>, migrated 1M+ historical events to AWS, and built a sub-second real-time invoice alert service." },
+    { k: ['skill', 'stack', 'tool', 'tech', 'language', 'know'], a: "<b>Data engineering:</b> SQL, T-SQL, Python, Spark, ETL/ELT, star-schema modeling, warehousing<br><b>Cloud:</b> AWS (S3, Lambda, DynamoDB, Redshift, CloudWatch, Kinesis, Glue, Athena), Azure (Data Factory, Databricks, SQL)<br><b>BI:</b> Power BI (DAX, Power Query), Excel<br><b>Ops:</b> pipeline monitoring, RCA, data quality, Selenium automation, Docker, Git" },
+    { k: ['aws', 'amazon', 'certif', 'lambda', 'dynamo', 'redshift', 's3'], a: "Yes, he's an <b>AWS Certified Data Engineer – Associate</b> (Oct 2024). In production he used S3, Lambda, DynamoDB and CloudWatch, including a webhook-driven alert service with <b>under 1 second</b> latency." },
+    { k: ['azure', 'spark', 'databricks', 'data factory', 'adf', 'microsoft'], a: "At MAQ Software he extended <b>Spark</b> ETL pipelines (cutting processing time ~20%) and automated ingestion with <b>Azure Data Factory</b>, Azure SQL Database and Blob Storage for Microsoft product teams." },
+    { k: ['power bi', 'dax', 'dashboard', 'report', 'visuali', 'tableau', 'bi '], a: "Power BI is a core strength: he built the Big Time Tickets sales platform in Power BI (sales velocity, ATPs, venue and section demand) and KPI dashboards for Microsoft product teams at MAQ Software." },
+    { k: ['pricing', 'price', 'fifa', 'world cup', 'revenue', 'margin', 'inventory'], a: "He drove pricing decisions on <b>$30M+</b> of annual inventory using marketplace APIs and demand signals, holding <b>18–23%</b> margins, and supported FIFA World Cup pricing and purchasing during a period that generated ~<b>$25M</b> in FIFA-related revenue." },
+    { k: ['greenhouse', 'quality', 'dq', 'quarantine', 'rca', 'reconcil', 'bell pepper'], a: "The <b>Greenhouse Data Quality</b> project is a SQL Server pipeline with 27 data-driven rules. It caught all 19 planted issues and, through root-cause analysis, recovered 33,469 kg of quarantined harvest caused by misspelled crop names. You can replay it in the <a href=\"#lab\">Pipeline Lab</a>." },
+    { k: ['real-time', 'realtime', 'real time', 'webhook', 'invoice', 'stream', 'kinesis', 'latency', 'alert'], a: "He built a production <b>real-time invoice alert service</b>: marketplace webhooks → Lambda → DynamoDB (deduplication) → Slack/Discord in under a second. He also has an open-source Kinesis → Lambda → S3 → Glue → Athena → QuickSight pipeline." },
+    { k: ['project', 'portfolio', 'github', 'built', 'side'], a: "Featured projects:<ul><li><b>Greenhouse Data Quality Monitor</b> (SQL Server, Python, Docker)</li><li><b>Real-Time Invoice Notifications</b> (AWS Lambda, DynamoDB)</li><li><b>Ticket Pricing &amp; Sales Analytics</b> (Power BI, Selenium)</li><li><b>AWS Real-Time Pipeline</b> (Kinesis, Glue, Athena)</li></ul>See them in <a href=\"#projects\">Projects</a> or on <a href=\"https://github.com/vikramdata\" target=\"_blank\" rel=\"noopener\">GitHub</a>." },
+    { k: ['education', 'degree', 'master', 'university', 'school', 'gpa', 'windsor', 'thapar', 'study', 'studied'], a: "<b>Master of Applied Computing</b>, University of Windsor (2021–2022, GPA 84.3%) and <b>B.E. Computer Engineering</b>, Thapar Institute (2017–2021, GPA 8.96/10)." },
+    { k: ['location', 'where', 'based', 'relocat', 'toronto', 'gta', 'ontario', 'remote', 'hybrid', 'onsite', 'on-site', 'commute', 'live'], a: "He's based in <b>Ontario, Canada</b>." },
+    { k: ['available', 'availability', 'start', 'notice', 'open to', 'looking', 'hire', 'hiring', 'job search'], a: "Yes, he's <b>available now</b> and looking for Data Engineering or Analytics Engineering roles, based in Ontario, Canada. <a href=\"#contact\">Get in touch</a>." },
+    { k: ['contact', 'email', 'reach', 'linkedin', 'phone', 'call', 'interview', 'talk', 'connect'], a: "Email <a href=\"mailto:sharmavik279@gmail.com\">sharmavik279@gmail.com</a> or connect on <a href=\"https://www.linkedin.com/in/vikramdata\" target=\"_blank\" rel=\"noopener\">LinkedIn</a>. You can also use the <a href=\"#contact\">message form</a>." },
+    { k: ['sql', 'python', 't-sql', 'query', 'queries'], a: "SQL and Python are his daily tools: T-SQL warehouses and DQ engines, Python ingestion and API integrations, Spark ETL. Try the live <a href=\"#lab\" data-lab-go=\"sql\">SQL playground</a> to run real queries." },
+    { k: ['salary', 'compensation', 'pay', 'rate', 'visa', 'permit', 'authoriz', 'sponsor', 'status', 'citizen', 'pr '], a: "That's best discussed with Vikram directly. Please email <a href=\"mailto:sharmavik279@gmail.com\">sharmavik279@gmail.com</a>." },
+    { k: ['resume', 'cv', 'pdf'], a: "You can <a href=\"#\" data-resume-link>open his résumé</a> here, filter it by role, and print or save it as a PDF." },
+    { k: ['hi', 'hello', 'hey', 'thanks', 'thank you'], a: "Hello! Ask me about Vikram's experience, skills, projects, AWS certification or availability." }
+  ];
+  function answer(q) {
+    const t = ' ' + q.toLowerCase() + ' ';
+    let best = null, score = 0;
+    KB.forEach(item => {
+      let s = 0;
+      item.k.forEach(k => { const re = k.length <= 3 ? new RegExp('\\b' + k.trim() + '\\b') : null; if (re ? re.test(t) : t.includes(k)) s += k.length > 4 ? 2 : 1; });
+      if (s > score) { score = s; best = item; }
+    });
+    return best ? best.a : "I don't have that one in the résumé. Try asking about <b>experience</b>, <b>skills</b>, <b>projects</b>, <b>AWS</b>, <b>education</b> or <b>availability</b>, or <a href=\"mailto:sharmavik279@gmail.com\">email Vikram</a> directly.";
+  }
+  function ask(q) {
+    if (!q.trim()) return;
+    add('me', esc(q));
+    const typing = add('bot typing', '<span></span><span></span><span></span>');
+    setTimeout(() => {
+      typing.remove(); bot(answer(q));
+      $$('[data-resume-link]', msgs).forEach(a => a.onclick = e => { e.preventDefault(); openResume(); });
+      $$('[data-lab-go]', msgs).forEach(a => a.onclick = () => { const tab = $('.lab-tab[data-panel="' + a.dataset.labGo + '"]'); if (tab) tab.click(); });
+    }, reduce ? 50 : 650);
+  }
+  $('#chatForm').addEventListener('submit', e => { e.preventDefault(); const i = $('#chatInput'); ask(i.value); i.value = ''; });
+  $$('#chatChips button').forEach(b => b.addEventListener('click', () => ask(b.dataset.ask)));
+
+  /* ================= SQL playground ================= */
+  const QUERIES = [
+`-- REC-001: shipped kg must not exceed sellable harvest by more than 20%
+WITH h AS (SELECT crop, SUM(kg) AS sellable_kg FROM harvest
+           WHERE grade IN ('A','B') GROUP BY crop),
+     s AS (SELECT crop, SUM(kg) AS shipped_kg FROM shipments GROUP BY crop)
+SELECT s.crop,
+       ROUND(h.sellable_kg) AS sellable_kg,
+       ROUND(s.shipped_kg)  AS shipped_kg,
+       ROUND(s.shipped_kg / h.sellable_kg, 2) AS ratio,
+       CASE WHEN s.shipped_kg > 1.2 * h.sellable_kg THEN 'FAIL' ELSE 'PASS' END AS rec_001
+FROM s LEFT JOIN h ON h.crop = s.crop
+ORDER BY ratio DESC;`,
+`-- Which harvest records use crop names missing from master data?
+SELECT h.crop        AS raw_crop_name,
+       COUNT(*)      AS records,
+       ROUND(SUM(kg)) AS kg_quarantined
+FROM harvest h
+WHERE h.crop NOT IN (SELECT crop FROM crop_master)
+GROUP BY h.crop
+ORDER BY kg_quarantined DESC;`,
+`-- RCA-001 fix: map spellings through crop_alias, then re-run REC-001
+WITH hc AS (SELECT COALESCE(a.crop, h.crop) AS crop, h.kg, h.grade
+            FROM harvest h LEFT JOIN crop_alias a ON a.raw_name = h.crop),
+     h AS (SELECT crop, SUM(kg) AS sellable_kg FROM hc
+           WHERE grade IN ('A','B') GROUP BY crop),
+     s AS (SELECT crop, SUM(kg) AS shipped_kg FROM shipments GROUP BY crop)
+SELECT s.crop,
+       ROUND(h.sellable_kg) AS sellable_kg,
+       ROUND(s.shipped_kg)  AS shipped_kg,
+       ROUND(s.shipped_kg / h.sellable_kg, 2) AS ratio,
+       CASE WHEN s.shipped_kg > 1.2 * h.sellable_kg THEN 'FAIL' ELSE 'PASS' END AS rec_001
+FROM s LEFT JOIN h ON h.crop = s.crop
+ORDER BY ratio DESC;`,
+`-- Sellable yield and grade-A share by greenhouse zone
+SELECT zone,
+       COUNT(*) AS harvests,
+       ROUND(SUM(CASE WHEN grade IN ('A','B') THEN kg END)) AS sellable_kg,
+       ROUND(100.0 * SUM(CASE WHEN grade = 'A' THEN kg END) / SUM(kg), 1) AS grade_a_pct
+FROM harvest
+GROUP BY zone
+ORDER BY sellable_kg DESC;`
+  ];
+  const input = $('#sqlInput'), status = $('#sqlStatus'), result = $('#sqlResult');
+  input.value = QUERIES[0];
+  $$('#sqlPresets .tab').forEach(b => b.addEventListener('click', () => {
+    $$('#sqlPresets .tab').forEach(x => x.classList.remove('active')); b.classList.add('active');
+    input.value = QUERIES[+b.dataset.q]; runSQL();
+  }));
+
+  function mulberry32(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function buildData() {
+    const R = mulberry32(42);
+    const crops = ['Tomato on the Vine', 'Bell Pepper', 'Mini Cucumber', 'Strawberry'];
+    const zones = ['Z01', 'Z02', 'Z03', 'Z04', 'Z05', 'Z06'];
+    const harvest = [], shipments = [], sellable = {};
+    let hid = 1;
+    for (let d = 1; d <= 30; d++) {
+      const date = '2026-09-' + String(d).padStart(2, '0');
+      crops.forEach(crop => {
+        const z = zones[Math.floor(R() * zones.length)];
+        const kg = Math.round(250 + R() * 900);
+        const g = R(); const grade = g < 0.6 ? 'A' : g < 0.85 ? 'B' : 'C';
+        let name = crop;
+        if (crop === 'Bell Pepper' && grade !== 'C' && R() < 0.40) name = R() < 0.5 ? 'Bell Peper' : 'bell pepper';
+        harvest.push([hid++, date, z, name, grade, kg]);
+        if (grade !== 'C') sellable[crop] = (sellable[crop] || 0) + kg;
+      });
+    }
+    const customers = ['FreshMart', 'Northern Grocers', 'Valley Foods', 'Lakeside Market'];
+    let lid = 1;
+    crops.forEach(crop => {
+      let left = sellable[crop] * (0.9 + R() * 0.12);
+      const parts = 12;
+      for (let i = 0; i < parts; i++) {
+        const kg = i === parts - 1 ? left : left / (parts - i) * (0.7 + R() * 0.6);
+        left -= kg;
+        const day = 3 + Math.floor(i * 2.3);
+        shipments.push([lid++, '2026-09-' + String(Math.min(day, 30)).padStart(2, '0'), customers[Math.floor(R() * customers.length)], crop, Math.round(kg / 5), Math.round(kg)]);
+      }
+    });
+    return { crops, harvest, shipments };
+  }
+
+  let dbPromise = null;
+  const SQLJS = 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.14.2/';
+  function loadDB() {
+    if (dbPromise) return dbPromise;
+    status.textContent = 'Loading SQLite (WebAssembly)…'; status.classList.remove('err');
+    dbPromise = new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = SQLJS + 'sql-wasm.js';
+      s.onload = () => window.initSqlJs({ locateFile: f => SQLJS + f }).then(SQL => {
+        const db = new SQL.Database();
+        const { crops, harvest, shipments } = buildData();
+        db.run('CREATE TABLE harvest (harvest_id INTEGER, harvest_date TEXT, zone TEXT, crop TEXT, grade TEXT, kg REAL);' +
+               'CREATE TABLE shipments (line_id INTEGER, ship_date TEXT, customer TEXT, crop TEXT, cases INTEGER, kg REAL);' +
+               'CREATE TABLE crop_master (crop TEXT);' +
+               'CREATE TABLE crop_alias (raw_name TEXT, crop TEXT);');
+        const ih = db.prepare('INSERT INTO harvest VALUES (?,?,?,?,?,?)'); harvest.forEach(r => ih.run(r)); ih.free();
+        const is = db.prepare('INSERT INTO shipments VALUES (?,?,?,?,?,?)'); shipments.forEach(r => is.run(r)); is.free();
+        crops.forEach(c => db.run('INSERT INTO crop_master VALUES (?)', [c]));
+        db.run("INSERT INTO crop_alias VALUES ('Bell Peper','Bell Pepper'), ('bell pepper','Bell Pepper')");
+        resolve(db);
+      }, reject);
+      s.onerror = () => reject(new Error('Could not load sql.js'));
+      document.head.appendChild(s);
+    });
+    dbPromise.catch(() => { dbPromise = null; });
+    return dbPromise;
+  }
+  function runSQL() {
+    loadDB().then(db => {
+      const t0 = performance.now();
+      try {
+        const res = db.exec(input.value);
+        const ms = (performance.now() - t0).toFixed(1);
+        if (!res.length) { result.innerHTML = ''; status.textContent = '✓ Statement ran (no rows returned) · ' + ms + ' ms'; status.classList.remove('err'); return; }
+        const r = res[res.length - 1];
+        let html = '<table><thead><tr>' + r.columns.map(c => '<th>' + esc(c) + '</th>').join('') + '</tr></thead><tbody>';
+        r.values.slice(0, 200).forEach(row => {
+          html += '<tr>' + row.map(v => { const cls = v === 'FAIL' ? ' class="fail"' : v === 'PASS' ? ' class="pass"' : ''; const txt = typeof v === 'number' ? v.toLocaleString() : v === null ? 'NULL' : v; return '<td' + cls + '>' + esc(txt) + (v === 'FAIL' ? ' ✗' : v === 'PASS' ? ' ✓' : '') + '</td>'; }).join('') + '</tr>';
+        });
+        result.innerHTML = html + '</tbody></table>';
+        status.textContent = '✓ ' + r.values.length + ' row' + (r.values.length === 1 ? '' : 's') + ' · ' + ms + ' ms';
+        status.classList.remove('err');
+      } catch (err) { result.innerHTML = ''; status.textContent = '✗ ' + err.message; status.classList.add('err'); }
+    }).catch(() => { status.textContent = '✗ Could not load the SQL engine. Check your connection and try again.'; status.classList.add('err'); });
+  }
+  $('#sqlRun').addEventListener('click', runSQL);
+  input.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); runSQL(); } });
+  let sqlOpened = false;
+  $$('.lab-tab[data-panel="sql"]').forEach(t => t.addEventListener('click', () => { if (!sqlOpened) { sqlOpened = true; runSQL(); } }));
+
+  /* ================= A/B simulator ================= */
+  const abA = $('#abA'), abB = $('#abB'), abN = $('#abN');
+  const pct = v => (+v).toFixed(1) + '%';
+  function syncAB() { $('#abAv').textContent = pct(abA.value); $('#abBv').textContent = pct(abB.value); $('#abNv').textContent = (+abN.value).toLocaleString(); }
+  [abA, abB, abN].forEach(i => i.addEventListener('input', syncAB)); syncAB();
+  function erf(x) { const s = Math.sign(x); x = Math.abs(x); const t = 1 / (1 + 0.3275911 * x); const y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x); return s * y; }
+  const phi = z => 0.5 * (1 + erf(z / Math.SQRT2));
+  function binom(n, p) { let c = 0; for (let i = 0; i < n; i++) if (Math.random() < p) c++; return c; }
+  $('#abRun').addEventListener('click', () => {
+    const n = +abN.value, pa = abA.value / 100, pb = abB.value / 100;
+    const ca = binom(n, pa), cb = binom(n, pb);
+    const ra = ca / n, rb = cb / n, pool = (ca + cb) / (2 * n);
+    const se = Math.sqrt(pool * (1 - pool) * (2 / n));
+    const z = se > 0 ? (rb - ra) / se : 0, p = 2 * (1 - phi(Math.abs(z)));
+    $('#abAr').textContent = (ra * 100).toFixed(2) + '%'; $('#abBr').textContent = (rb * 100).toFixed(2) + '%';
+    $('#abAc').textContent = 'conversions ' + ca.toLocaleString() + ' / ' + n.toLocaleString();
+    $('#abBc').textContent = 'conversions ' + cb.toLocaleString() + ' / ' + n.toLocaleString();
+    const mx = Math.max(ra, rb, 0.0001);
+    $('#abAbar').style.width = (ra / mx * 100) + '%'; $('#abBbar').style.width = (rb / mx * 100) + '%';
+    $('#abUp').textContent = ra > 0 ? ((rb - ra) / ra * 100 >= 0 ? '+' : '') + ((rb - ra) / ra * 100).toFixed(1) + '%' : '–';
+    $('#abZ').textContent = z.toFixed(2); $('#abP').textContent = p < 0.0001 ? '< 0.0001' : p.toFixed(4);
+    $('#abVerdict').innerHTML = p < 0.05 ? '<span class="verdict yes">Significant ✓</span>' : '<span class="verdict no">Not significant</span>';
+  });
+
+  /* ================= Recruiter tour ================= */
+  const pop = $('#tourPop');
+  const go = (sel) => { const el = typeof sel === 'string' ? $(sel) : sel; if (el) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); return el; };
+  const labTab = id => { const t = $('.lab-tab[data-panel="' + id + '"]'); if (t) t.click(); };
+  const STEPS = [
+    { t: 'Snapshot', x: '5+ years in data engineering and analytics, AWS certified, and available now. Based in Ontario, Canada.', el: '.profile' },
+    { t: 'Experience & impact', x: 'Most recently he owned the data stack at a $50M+ ticket brokerage: API ingestion, AWS, real-time alerts and the pricing analytics behind $30M+ of inventory.', el: '#experience .t-item' },
+    { t: 'Featured project', x: 'A data quality pipeline with 27 rules that caught every planted issue and traced a reconciliation failure to its root cause.', el: '#projects .proj.featured' },
+    { t: 'Pipeline Lab: run it live', x: 'Watch the pipeline run, fail reconciliation, then pass after the root-cause fix.', el: '#lab .lab', run: () => { labTab('dq'); setTimeout(() => { const b = $('#dqRun'); if (b && !b.disabled) b.click(); }, 600); } },
+    { t: 'Live SQL playground', x: 'A real SQLite database in the browser. This query surfaces the misspelled crop names behind the bug.', el: '#lab .lab', run: () => { labTab('sql'); setTimeout(() => { const b = $('#sqlPresets [data-q="1"]'); if (b) b.click(); }, 400); } },
+    { t: 'Core skills', x: 'SQL, Python, Spark, AWS and Azure for pipelines; Power BI for analytics; monitoring and RCA for reliability.', el: '#skills .skill-grid' },
+    { t: 'Interactive résumé', x: 'Filter the résumé by Data Engineering or Analytics, then print or save it as a PDF.', el: '#resumeModal .modal-card', run: () => { openResume(); setTimeout(() => filterResume('de'), 700); }, leave: () => { filterResume('all'); closeResume(); } },
+    { t: 'Résumé assistant', x: 'Ask questions about his background any time from the chat button.', el: '#chat', run: () => { openChat(); setTimeout(() => { if (!msgs.querySelector('.msg.me')) ask('Summarize his experience'); }, 500); }, leave: () => closeChat() },
+    { t: "Let's connect", x: 'Email, LinkedIn, or send a message straight from the form. Thanks for taking the tour!', el: '#contact .contact-grid' }
+  ];
+  let idx = -1, timer = null, auto = false, focused = null;
+  function clearFocus() { if (focused) focused.classList.remove('tour-focus'); focused = null; }
+  function render() {
+    clearTimeout(timer); clearFocus();
+    const s = STEPS[idx];
+    $('#tourStep').textContent = 'Step ' + (idx + 1) + ' of ' + STEPS.length;
+    $('#tourTitle').textContent = s.t; $('#tourText').textContent = s.x;
+    $('#tourBody').innerHTML = '<div class="tour-progress"><span style="width:' + ((idx + 1) / STEPS.length * 100) + '%"></span></div>' +
+      '<div class="tour-btns"><button class="link" data-t="back"' + (idx === 0 ? ' disabled style="opacity:.4"' : '') + '>Back</button><span class="spacer"></span>' +
+      '<button class="link" data-t="skip">' + (auto ? 'Pause' : 'Skip') + '</button><button class="btn primary sm" data-t="next">' + (idx === STEPS.length - 1 ? 'Finish' : 'Next') + '</button></div>';
+    if (s.run) s.run();
+    setTimeout(() => { const el = go(s.el); if (el) { el.classList.add('tour-focus'); focused = el; } }, s.run ? 350 : 0);
+    if (auto) timer = setTimeout(next, idx === 3 ? 9000 : 6500);
+  }
+  function leave() { const s = STEPS[idx]; if (s && s.leave) s.leave(); }
+  function next() { leave(); if (idx < STEPS.length - 1) { idx++; render(); } else endTour(); }
+  function back() { leave(); if (idx > 0) { idx--; render(); } }
+  function endTour() { clearTimeout(timer); leave(); clearFocus(); pop.classList.remove('open'); idx = -1; auto = false; }
+  function startTour() {
+    closeResume(); closeChat(); $('#mobileMenu').classList.remove('open');
+    $('#tourStep').textContent = ''; $('#tourTitle').textContent = "Welcome to Vikram's portfolio";
+    $('#tourText').textContent = 'A quick guided walkthrough of his experience, projects, live pipeline demos and résumé. How would you like to go?';
+    $('#tourBody').innerHTML = '<div class="tour-start"><button class="btn primary" data-t="auto">▶ Autoplay tour (~60s)</button><button class="btn" data-t="self">👤 Self-paced</button><button class="link" data-t="end" style="justify-self:center">Skip</button></div>';
+    pop.classList.add('open');
+  }
+  pop.addEventListener('click', e => {
+    const b = e.target.closest('[data-t]'); if (!b) return;
+    const a = b.dataset.t;
+    if (a === 'auto' || a === 'self') { auto = a === 'auto'; idx = 0; render(); }
+    else if (a === 'next') next();
+    else if (a === 'back') back();
+    else if (a === 'skip') { if (auto) { auto = false; clearTimeout(timer); render(); } else endTour(); }
+    else if (a === 'end') endTour();
+  });
+  $$('[data-tour]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); startTour(); }));
 })();
 </script>
 </body>
